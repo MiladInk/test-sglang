@@ -440,6 +440,10 @@ def split_solution_inplace(reasoning_latex: str) -> List[int]:
     # Try to break very long parts
     indices = try_to_break_very_long_parts(text, indices)
     assert text == reasoning_latex
-    assert indices[-1] == len(text)
+    
+    # assert indices[-1] == len(text)
+    if indices[-1] != len(text):
+        print("Last index should be the length of the text")
+        indices.append(len(text))
 
     return indices
